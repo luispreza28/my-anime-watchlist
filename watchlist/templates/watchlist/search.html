@@ -1,0 +1,47 @@
+{% extends 'watchlist/layout.html' %}
+{% load static %}
+{% block body %}
+<h1>Search Anime <img src="https://media.tenor.com/0mX52HNM8HwAAAAC/pepe-type.gif" alt="pepe-type" class="title-image"> </h1>
+  <div class="search-container">
+    <form action="{% url 'fetch_anime' user_id=user_id %}" method="get" id="search-form">
+      <textarea autofocus name="anime-name" id="anime-name" class="search-input" cols="50" rows="1" placeholder="Name"></textarea>
+      <input type="hidden" value="{{ user_id }}" class="user-id">
+      <br>
+      <button type="submit" value="Search" class="search-button">Search</button>
+    </form>
+  </div>
+  <div class="search-results">
+    {% for anime in paginated_data %}
+        <div class="anime-div">
+            <img src="{{ anime.picture_url }}" alt="{{ anime.title }}" class="anime-image" width="150" height="150">
+            <h3>{{ anime.title }}</h3>
+            <p>{{ anime.description }}</p>
+            <button class="watch-list-button" onclick="getAnime('{{ anime.myanimelist_id }}', '{{ user_id }}', '{{ anime.title }}')">Add to watchlist</button>
+            <input type="hidden" name="myanimelist_id" value="{{ anime.myanimelist_id }}">
+            <input type="hidden" name="anime_title" value="{{ anime.title }}">
+            <input type="hidden" name="anime_description" value="{{ anime.description }}">
+            <input type="hidden" name="anime_url" value="{{ anime.myanimelist_url }}">
+            <input type="hidden" name="anime_picture" value="{{ anime.picture_url }}">
+            <a href="{{ anime.myanimelist_url }}">More info on {{ anime.title }} here!</a>
+        </div>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if paginated_data.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ paginated_data.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ paginated_data.number }} of {{ paginated_data.paginator.num_pages }}.
+            </span>
+
+            {% if paginated_data.has_next %}
+                <a href="?page={{ paginated_data.next_page_number }}">next</a>
+                <a href="?page={{ paginated_data.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

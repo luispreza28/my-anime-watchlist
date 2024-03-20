@@ -1,0 +1,71 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Anime Watchlist {% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="{% static 'watchlist/css/styles.css' %}" rel="stylesheet">
+  <script src="{% static 'watchlist/js/index.js' %}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">Anime Watchlist</a>
+    <div>
+      <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link dropbtn" href="{% url 'profile' user_id=user.id %}">{{ user.username }}</a>
+                <div class="dropdown-content">
+                  <a href="{% url 'profile' user_id=user.id %}">Profile</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link dropbtn" href="">Watchlist</a>
+                <div class="dropdown-content">
+                  <a href="{% url 'all_anime_watchlist' user_id=user.id %}">All My Anime</a>
+                  <a href="{% url 'currently_watching' user_id=user.id %}">Currently Watching</a>
+                  <a href="{% url 'completed' user_id=user.id %}">Completed</a>
+                  <a href="{% url 'on_hold' user_id=user.id %}">On Hold</a>
+                  <a href="{% url 'dropped' user_id=user.id %}">Dropped</a>
+                  <a href="{% url 'plan_to_watch' user_id=user.id %}">Plan to Watch</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                  <a class="nav-link dropbtn" href="#">Anime</a>
+                  <div class="dropdown-content">
+                    <a href="{% url 'search' %}">Anime Search</a>
+                    <a href="{% url 'every_anime' %}">Every Anime</a>
+                  </div>
+                </div>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link dropbtn" href="{% url 'logout' %}">Log Out</a>
+              </div>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  {% block body %}
+
+  {% endblock %}
+</body>
+</html>

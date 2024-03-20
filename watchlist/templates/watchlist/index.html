@@ -1,0 +1,54 @@
+{% extends 'watchlist/layout.html' %} {% load static %} {% block body %}
+<div class="anime-div">
+  <h1>Hello {{ user }}! Welcome to your anime list!</h1>
+  <div>
+    {% if paginated_data %} 
+    <h2>Here are some recommended animes for you {{ user }}!</h2>
+    {% for anime in paginated_data %}
+    <div class="search-results">
+      <div class="anime-div">
+        <img
+          src="{{ anime.picture_url }}"
+          alt="{{ anime.title }}"
+          class="anime-image"
+        />
+        <h3 class="anime-title">{{ anime.title }}</h3>
+        <p class="anime-description">{{ anime.description }}</p>
+        <div>
+          <button
+            class="watch-list-button"
+            onclick="getAnime('{{anime.myanimelist_id}}','{{user.id}}')"
+          >
+            Add to watchlist
+          </button>
+        </div>
+        <a href="{{ anime.myanimelist_url }}"
+          >More info on {{ anime.title }} here!</a
+        >
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="pagination">
+    <div class="step-links">
+      {% if paginated_data.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ paginated_data.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ paginated_data.number }} of {{ paginated_data.paginator.num_pages }}
+      </span>
+
+      {% if paginated_data.has_next %}
+      <a href="?page={{ paginated_data.next_page_number }}">next</a>
+      <a href="?page={{ paginated_data.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </div>
+    {% else %}
+    <h2>There are currently no reccomendations for you 😢</h2>
+    <h2>Remember to rate your animes to get more recommended animes!</h2>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

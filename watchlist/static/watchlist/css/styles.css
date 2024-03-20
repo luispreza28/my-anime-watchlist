@@ -1,0 +1,182 @@
+
+.dropbtn {
+  color: black !important;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.all-anime-watchlist-button {
+  background-color: white;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.anime-image {
+  width: 200px;
+  height: 300px;
+  object-fit: cover; /* Ensures the image covers the container */
+  border-radius: 50%; /* Makes the image round if it's a square */
+  margin-bottom: 10px;
+
+}
+
+/* Style for anime container */
+.anime-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+
+/* Style for anime title */
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Style for anime description */
+p {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Style for buttons */
+.watch-list-button, .increase, .decrease, .remove {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Change button background color on hover */
+.watch-list-button:hover, .increase:hover, .decrease:hover {
+  background-color: #45a049;
+}
+
+.remove {
+  background: red;
+}
+
+.remove:hover {
+  background-color: darkred;
+}
+
+/* Style for anime details */
+.anime-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Style for anime link */
+a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+/* Change link color on hover */
+a:hover {
+  color: #0056b3;
+}
+
+.title-image {
+  width: 50;
+  height: 50;
+}
+
+/* Styles for the search bar container */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+/* Styles for the search input */
+.search-input {
+  padding: 10px;
+  border: 2px solid #3498db;
+  border-radius: 25px;
+  width: 300px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Styles for the search button */
+.search-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Change button color on hover */
+.search-button:hover {
+  background-color: #2980b9;
+}
+
+/* Add some animation to the search bar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to the search container */
+.search-container {
+  animation: fadeIn 1s ease;
+}

@@ -1,0 +1,14 @@
+{% extends 'watchlist/layout.html' %}
+{% load static %}
+{% block body %}
+
+<div>
+  <h1>Anime Stats</h1>
+  <p> <a href="{% url 'currently_watching' user_id=user.id %}">Currenlty Watching:</a> {{ currently_watching_count }}</p>
+  <p> <a href="{% url 'completed' user_id=user.id %}">Completed:</a> {{ completed_count }}</p>
+  <p> <a href="{% url 'on_hold' user_id=user.id %}">On Hold:</a> {{ on_hold_count }}</p>
+  <p> <a href="{% url 'dropped' user_id=user.id %}">Dropped:</a> {{ dropped_count }}</p>
+  <p> <a href="{% url 'plan_to_watch' user_id=user.id %}">Plan to Watch:</a> {{ plan_to_watch_count }}</p>
+</div>
+
+{% endblock %}

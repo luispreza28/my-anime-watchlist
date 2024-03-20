@@ -1,0 +1,17 @@
+{% extends 'watchlist/layout.html' %}
+{% load static %}
+{% block body %}
+<form action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <input autofocus placeholder="Username" type="text" class="form-control" name="username" id="username" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input placeholder="Password" type="password" class="form-control" name="password" id="password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+<p>Not registered yet? <a href="{% url 'register' %}">Register Here</a></p>
+{% endblock %}
