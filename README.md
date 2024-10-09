@@ -108,6 +108,9 @@ Contributions are welcome! If you want to contribute to the project, please fork
 6. Open a Pull Request
 
 ## Acknowledgements
+
 [Django Documentation](https://docs.djangoproject.com/en/5.1/)
+
 [JavaScript Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
 [Anime APIs](https://rapidapi.com/felixeschmittfes/api/myanimelist/playground/apiendpoint_df7df34c-2e4a-4231-a9e2-8d76c6445333)
