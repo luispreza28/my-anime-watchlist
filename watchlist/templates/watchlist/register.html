@@ -1,30 +1,38 @@
 {% extends 'watchlist/layout.html' %}
 {% load static %}
+
 {% block body %}
-<form action="{% url 'register' %}" method="post">
-  {% csrf_token %}
-  <div class="mb-3">
-    <h1>Register</h1>
-    <p><b>Fill in this form to create an account.</b></p>
-    <hr>
-  </div>
-  <div class="mb-3">
-    <label for="username"><b>Username</b></label>
-    <input type="text" autofocus placeholder="Username" name="username" id="username" required>
-  </div>
-  <div class="mb-3">
-    <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Email" name="email" id="email" required>
-  </div>
-  <div class="mb-3">
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Password" name="password" id="password" required>
-  </div>
-  <div class="mb-3">
-    <label for="confirmation"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Confirm Password" name="confirmation" id="confirmation" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Register</button>
-  <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
-</form>
+<div class="register-container">
+    <div class="register-form">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <h1 class="form-title">Create an Account</h1>
+            <p class="form-subtitle"><b>Fill out the form below to sign up.</b></p>
+            <hr>
+
+            <div class="form-group">
+                <label for="username" class="form-label"><b>Username</b></label>
+                <input type="text" class="form-control" placeholder="Enter your username" name="username" id="username" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label"><b>Email</b></label>
+                <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label"><b>Password</b></label>
+                <input type="password" class="form-control" placeholder="Create a password" name="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmation" class="form-label"><b>Confirm Password</b></label>
+                <input type="password" class="form-control" placeholder="Repeat your password" name="confirmation" id="confirmation" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <p class="login-link">Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+        </form>
+    </div>
+</div>
 {% endblock %}

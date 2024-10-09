@@ -17804,3 +17804,19 @@ Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 Starting new HTTPS connection (1): myanimelist.p.rapidapi.com:443
 https://myanimelist.p.rapidapi.com:443 "GET /v2/anime/search?q=dragon+ball&n=10&score=0 HTTP/1.1" 200 None
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+/home/animalmother/Documents/web50/projects/2020/x/capstone/watchlist/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/animalmother/Documents/web50/projects/2020/x/capstone/watchlist/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/animalmother/Documents/web50/projects/2020/x/capstone/watchlist/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /None
+Starting new HTTPS connection (1): myanimelist.p.rapidapi.com:443
+https://myanimelist.p.rapidapi.com:443 "GET /v2/anime/search?q=bleach&n=10&score=0 HTTP/11" 200 None
+Starting new HTTPS connection (1): myanimelist.p.rapidapi.com:443
+https://myanimelist.p.rapidapi.com:443 "GET /anime/8247 HTTP/11" 200 None
+Starting new HTTPS connection (1): myanimelist.p.rapidapi.com:443
+https://myanimelist.p.rapidapi.com:443 "GET /v2/anime/search?q=jujutsu+kaisen&n=10&score=0 HTTP/11" 200 None

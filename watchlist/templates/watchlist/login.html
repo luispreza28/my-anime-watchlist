@@ -1,17 +1,21 @@
 {% extends 'watchlist/layout.html' %}
 {% load static %}
 {% block body %}
-<form action="{% url 'login' %}" method="post">
-  {% csrf_token %}
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Username</label>
-    <input autofocus placeholder="Username" type="text" class="form-control" name="username" id="username" required>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input placeholder="Password" type="password" class="form-control" name="password" id="password" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
-<p>Not registered yet? <a href="{% url 'register' %}">Register Here</a></p>
+<div class="login-container">
+    <h1 class="login-title">Welcome Back!</h1>
+    <p class="login-subtitle">Please log in to continue</p>
+    <form action="{% url 'login' %}" method="post" class="login-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username" class="form-label">Username</label>
+            <input autofocus placeholder="Enter your username" type="text" class="form-input" name="username" id="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input placeholder="Enter your password" type="password" class="form-input" name="password" id="password" required>
+        </div>
+        <button type="submit" class="login-button">Login</button>
+    </form>
+    <p class="login-footer">Not registered yet? <a href="{% url 'register' %}">Register Here</a></p>
+</div>
 {% endblock %}

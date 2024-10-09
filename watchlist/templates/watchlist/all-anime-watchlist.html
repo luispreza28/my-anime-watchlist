@@ -2,16 +2,19 @@
 {% load static %}
 
 {% block body %}
-<h1>{{ user }}'s Anime List <img src="https://media.tenor.com/UtDRUx24gVQAAAAC/pepo-dance-twitch.gif" alt="pepe=dance" class="title-image"></h1>
-  <div>
-    {% for anime in paginated_data %}
-    <div class="search-results">
-      <div class="anime-div">
-        <img src="{{ anime.anime.picture_url }}" alt="{{ anime.anime.title }}" class="anime-image">
-        <h3 class="anime-title">{{ anime.anime.title }}</h3>
-        <p class="anime-description">{{ anime.anime.description }}</p>
-        <div class="dropdown">
-          <button class="dropbtn all-anime-watchlist-button" id="status-button">
+<h1 class="page-title">{{ user }}'s Anime List 
+  <img src="https://media.tenor.com/UtDRUx24gVQAAAAC/pepo-dance-twitch.gif" alt="pepe=dance" class="title-image">
+</h1>
+
+<div class="watchlist-container">
+  {% if paginated_data %}
+    <div class="anime-list">
+      {% for anime in paginated_data %}
+        <div class="anime-card">
+          <img src="{{ anime.anime.picture_url }}" alt="{{ anime.anime.title }}" class="anime-image">
+          <h3 class="anime-title">{{ anime.anime.title }}</h3>
+          <p class="anime-description">{{ anime.anime.description }}</p>
+          <div class="status-dropdown">
             <form class="status-form" method="POST">
               {% csrf_token %}
               <input type="hidden" class="user-id" value="{{ user.id }}">
@@ -24,41 +27,46 @@
                   </option>
                 {% endfor %}
               </select>
-              <button type="submit">Change Status</button>
+              <button type="submit" class="btn btn-change-status">Change Status</button>
             </form>
-              <div class="anime-details">
-                <label for="episode">Current Episode: </label>
-                <input type="number" class="episode-input" onkeydown="checkEpisodeEnter(event, {{ anime.anime.myanimelist_id }})" value="{{ anime.progress }}">
-                <button class="decrease">-</button>
-                <button class="increase">+</button>
-              </div>
-              <div>
-                <label for="rating">Rating: </label>
-                <input type="number" class="rating-inputs" onkeydown="checkRatingEnter(event, {{ anime.anime.myanimelist_id}})" value="{{ anime.rating }}">
-              </div>
-              <div>
-                <button class="remove" onclick="removeAnime('{{ anime.anime.title }}')">Remove from watchlist</button>
-              </div>
-              <a href="{{ anime.anime.myanimelist_url }}">More info on {{ anime.anime.title }} here!</a>
-            </div>
           </div>
-        {% endfor %}
-  </div>
-  <div class="pagination">
-    <div class="step-links">
-      {% if paginated_data.has_previous %}
-        <a href="?page=1">&laquo; first</a>
-        <a href="?page={{ paginated_data.previous_page_number }}">previous</a>
-      {% endif %}
-
-      <span class="current">
-        Page {{ paginated_data.number }} of {{ paginated_data.paginator.num_pages}}
-      </span>
-
-      {% if paginated_data.has_next %}
-        <a href="?page={{ paginated_data.next_page_number }}">next</a>
-        <a href="?page={{ paginated_data.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
+          <div class="anime-details">
+            <label for="episode">Current Episode:</label>
+            <input type="number" class="episode-input" onkeydown="checkEpisodeEnter(event, {{ anime.anime.myanimelist_id }})" value="{{ anime.progress }}">
+            <button class="decrease">-</button>
+            <button class="increase">+</button>
+          </div>
+          <div>
+            <label for="rating">Rating:</label>
+            <input type="number" class="rating-inputs" onkeydown="checkRatingEnter(event, {{ anime.anime.myanimelist_id}})" value="{{ anime.rating }}">
+          </div>
+          <div>
+            <button class="remove" onclick="removeAnime('{{ anime.anime.title }}')">Remove from watchlist</button>
+          </div>
+          <a href="{{ anime.anime.myanimelist_url }}" class="more-info">More info on {{ anime.anime.title }} here!</a>
+        </div>
+      {% endfor %}
     </div>
+  {% else %}
+    <h2>No anime in your watchlist yet! Start adding some!</h2>
+  {% endif %}
+
+  <div class="pagination">
+    {% if paginated_data.has_previous %}
+      <a href="?page=1" class="pagination-button">&laquo; first</a>
+      <a href="?page={{ paginated_data.previous_page_number }}" class="pagination-button">previous</a>
+    {% endif %}
+  
+    <span class="current-page">
+      Page {{ paginated_data.number }} of {{ paginated_data.paginator.num_pages }}
+    </span>
+  
+    {% if paginated_data.has_next %}
+      <a href="?page={{ paginated_data.next_page_number }}" class="pagination-button">next</a>
+      <a href="?page={{ paginated_data.paginator.num_pages }}" class="pagination-button">last &raquo;</a>
+    {% endif %}
   </div>
+</div>
+
+
 {% endblock %}

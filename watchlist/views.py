@@ -20,7 +20,7 @@ X_RAPIDAPI_HOST = 'myanimelist.p.rapidapi.com'
 def index_views(request):
   user = request.user
   if request.method == "GET":
-    items_per_page = 5
+    items_per_page = 4
 
     recommended_animes = get_recommended_anime(user)
     if (recommended_animes):
@@ -144,7 +144,7 @@ def watchlist_views(request, user_id, status=None):
       users_list = get_user_anime_list_by_status(user, status)
       status = convert_status(status)
       
-    items_per_page = 5
+    items_per_page = 4
     paginated_data = get_paginated_data(users_list, items_per_page, request)
 
     return render(request, f'watchlist/{status}.html' if status else 'watchlist/all-anime-watchlist.html', {
@@ -328,7 +328,7 @@ def every_anime_views(request):
 
     user_id = request.user.id
     
-    items_per_page = 5
+    items_per_page = 4
 
     paginated_data = get_paginated_data(every_anime, items_per_page, request)
 

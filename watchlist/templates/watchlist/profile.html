@@ -2,13 +2,55 @@
 {% load static %}
 {% block body %}
 
-<div>
-  <h1>Anime Stats</h1>
-  <p> <a href="{% url 'currently_watching' user_id=user.id %}">Currenlty Watching:</a> {{ currently_watching_count }}</p>
-  <p> <a href="{% url 'completed' user_id=user.id %}">Completed:</a> {{ completed_count }}</p>
-  <p> <a href="{% url 'on_hold' user_id=user.id %}">On Hold:</a> {{ on_hold_count }}</p>
-  <p> <a href="{% url 'dropped' user_id=user.id %}">Dropped:</a> {{ dropped_count }}</p>
-  <p> <a href="{% url 'plan_to_watch' user_id=user.id %}">Plan to Watch:</a> {{ plan_to_watch_count }}</p>
+<div class="profile-container">
+    <h1 class="profile-header">Anime Stats</h1>
+    <div class="anime-stats">
+        <div class="stat-card">
+            <a href="{% url 'currently_watching' user_id=user.id %}">
+                <div class="stat-icon currently-watching-icon"></div>
+                <div class="stat-info">
+                    <h2>Currently Watching</h2>
+                    <p>{{ currently_watching_count }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="stat-card">
+            <a href="{% url 'completed' user_id=user.id %}">
+                <div class="stat-icon completed-icon"></div>
+                <div class="stat-info">
+                    <h2>Completed</h2>
+                    <p>{{ completed_count }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="stat-card">
+            <a href="{% url 'on_hold' user_id=user.id %}">
+                <div class="stat-icon on-hold-icon"></div>
+                <div class="stat-info">
+                    <h2>On Hold</h2>
+                    <p>{{ on_hold_count }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="stat-card">
+            <a href="{% url 'dropped' user_id=user.id %}">
+                <div class="stat-icon dropped-icon"></div>
+                <div class="stat-info">
+                    <h2>Dropped</h2>
+                    <p>{{ dropped_count }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="stat-card">
+            <a href="{% url 'plan_to_watch' user_id=user.id %}">
+                <div class="stat-icon plan-to-watch-icon"></div>
+                <div class="stat-info">
+                    <h2>Plan to Watch</h2>
+                    <p>{{ plan_to_watch_count }}</p>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
