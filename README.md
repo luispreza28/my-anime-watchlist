@@ -1,6 +1,6 @@
 # Anime Watchlist Application
 
-#### video Demo: <https://youtu.be/aImoX-gljsk>
+#### video Demo: <https://youtu.be/aImoX-gljsk> USING OLD CSS LAYOUT
 
 ## Overview
 
